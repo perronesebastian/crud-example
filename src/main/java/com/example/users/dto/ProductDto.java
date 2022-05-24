@@ -2,16 +2,16 @@ package com.example.users.dto;
 
 public class ProductDto {
 	
-	private Integer amount;
+	private Integer quantity;
 	private Double price;
 	private String description;
 	
-	public Integer getAmount() {
-		return amount;
+	public Integer getQuantity() {
+		return quantity;
 	}
 	
-	public void setAmount(Integer amount) {
-		this.amount = amount;
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 	
 	public Double getPrice() {

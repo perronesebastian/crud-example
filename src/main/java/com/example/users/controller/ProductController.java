@@ -24,25 +24,25 @@ public class ProductController {
 	ProductService productService;
 	
 	@PostMapping
-	public ResponseEntity<ProductEntity> create(@RequestBody ProductDto productDto){
+	public ResponseEntity<ProductEntity> create(@RequestBody ProductDto productDto) {
 		productService.create(productDto);
 		return new ResponseEntity<ProductEntity>(HttpStatus.OK);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<ProductEntity> update(@PathVariable("id") Long id, @RequestBody ProductDto product){
+	public ResponseEntity<ProductEntity> update(@PathVariable("id") Long id, @RequestBody ProductDto product) {
 		productService.update(id, product);
 		return new ResponseEntity<ProductEntity>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<EmployeeEntity> delete(@PathVariable("id") Long id){
+	public ResponseEntity<EmployeeEntity> delete(@PathVariable("id") Long id) {
 		productService.delete(id);
 		return new ResponseEntity<EmployeeEntity>(HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<ProductDto> get(@PathVariable("id") Long id){
+	public ResponseEntity<ProductDto> get(@PathVariable("id") Long id) {
 		ProductDto dto = productService.get(id);
 		return new ResponseEntity<ProductDto>(dto, HttpStatus.OK);
 	}

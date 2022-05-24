@@ -8,15 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Products")
+@Table(name = "products")
 public class ProductEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "amount")
-	private Integer amount;
+	@Column(name = "quantity")
+	private Integer quantity;
 	
 	@Column(name = "price")
 	private Double price;
@@ -24,12 +24,12 @@ public class ProductEntity {
 	@Column(name = "description")
 	private String description;
 
-	public Integer getAmount() {
-		return amount;
+	public Integer getQuantity() {
+		return quantity;
 	}
 
-	public void setAmount(Integer amount) {
-		this.amount = amount;
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 
 	public Double getPrice() {

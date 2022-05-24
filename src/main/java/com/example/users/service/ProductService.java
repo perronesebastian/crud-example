@@ -16,7 +16,7 @@ public class ProductService {
 	
 	public void create(ProductDto request) {
 		ProductEntity entity = new ProductEntity();
-		entity.setAmount(request.getAmount());
+		entity.setQuantity(request.getQuantity());
 		entity.setDescription(request.getDescription());
 		entity.setPrice(request.getPrice());
 		productRepository.save(entity);
@@ -26,7 +26,7 @@ public class ProductService {
 		Optional<ProductEntity> productEntity = productRepository.findById(id);
 		if (productEntity.isPresent()) {
 			ProductEntity result = productEntity.get();
-			result.setAmount(product.getAmount());
+			result.setQuantity(product.getQuantity());
 			result.setDescription(product.getDescription());
 			result.setPrice(product.getPrice());
 			productRepository.save(result);
@@ -42,7 +42,7 @@ public class ProductService {
 		if (productEntity.isPresent()) {
 			ProductEntity result = productEntity.get();
 			ProductDto productDto = new ProductDto();
-			productDto.setAmount(result.getAmount());
+			productDto.setQuantity(result.getQuantity());
 			productDto.setDescription(result.getDescription());
 			productDto.setPrice(result.getPrice());
 			return productDto;
