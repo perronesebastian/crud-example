@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.example.users.dto.EmployeeDto;
 import com.example.users.entity.EmployeeEntity;
 import com.example.users.service.EmployeeService;
@@ -26,7 +25,6 @@ public class EmployeeController {
 	@GetMapping("/{id}")
     public ResponseEntity<EmployeeDto> get(@PathVariable("id") Long id) {
         EmployeeDto dto = employeeService.get(id);
- 
         return new ResponseEntity<EmployeeDto>(dto, HttpStatus.OK);
     }
 	

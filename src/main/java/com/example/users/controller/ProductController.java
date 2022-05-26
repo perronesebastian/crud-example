@@ -16,6 +16,10 @@ import com.example.users.entity.EmployeeEntity;
 import com.example.users.entity.ProductEntity;
 import com.example.users.service.ProductService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
 @RequestMapping("/products")
 public class ProductController {
@@ -24,26 +28,49 @@ public class ProductController {
 	ProductService productService;
 	
 	@PostMapping
+	@ApiOperation(value = "Create products", response = ProductDto.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "The record was created"),
+			@ApiResponse(code = 404, message = "The record was not created")
+	})
 	public ResponseEntity<ProductEntity> create(@RequestBody ProductDto productDto) {
 		productService.create(productDto);
 		return new ResponseEntity<ProductEntity>(HttpStatus.OK);
 	}
 	
 	@PutMapping("/{id}")
+	@ApiOperation(value = "Update products", response = ProductDto.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "The record was updated"),
+			@ApiResponse(code = 404, message = "The record was not updated")
+	})
 	public ResponseEntity<ProductEntity> update(@PathVariable("id") Long id, @RequestBody ProductDto product) {
 		productService.update(id, product);
 		return new ResponseEntity<ProductEntity>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
+	@ApiOperation(value = "Delete products", response = ProductDto.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "The record was deleted"),
+			@ApiResponse(code = 404, message = "The record was not deleted")
+	})
 	public ResponseEntity<EmployeeEntity> delete(@PathVariable("id") Long id) {
 		productService.delete(id);
 		return new ResponseEntity<EmployeeEntity>(HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
+	@ApiOperation(value = "Returns a products for a given id", response = ProductDto.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "The record was found"),
+			@ApiResponse(code = 404, message = "The record was not found")
+	})
 	public ResponseEntity<ProductDto> get(@PathVariable("id") Long id) {
 		ProductDto dto = productService.get(id);
 		return new ResponseEntity<ProductDto>(dto, HttpStatus.OK);
 	}
 }
+
+//vista -> dto || controlador -> service || resource -> controller || model -> entity
+
